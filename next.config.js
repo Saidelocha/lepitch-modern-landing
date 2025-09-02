@@ -207,8 +207,26 @@ const nextConfig = {
             key: 'Cross-Origin-Resource-Policy',
             value: 'cross-origin',
           },
+        ],
+      },
+      
+      // === HEADERS SPÉCIFIQUES POUR WEBMANIFEST ===
+      {
+        source: '/favicon/site.webmanifest',
+        headers: [
+          // Cache approprié pour PWA
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, must-revalidate',
+          },
           
-          // Type MIME correct pour webmanifest
+          // Autoriser l'accès cross-origin pour PWA
+          {
+            key: 'Cross-Origin-Resource-Policy',
+            value: 'cross-origin',
+          },
+          
+          // Type MIME correct pour webmanifest uniquement
           {
             key: 'Content-Type',
             value: 'application/manifest+json',
