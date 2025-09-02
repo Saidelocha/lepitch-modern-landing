@@ -2,8 +2,20 @@
 const nextConfig = {
   async headers() {
     return [
+      // === HEADERS FOR VERCEL ANALYTICS/INSIGHTS ===
       {
-        source: '/((?!favicon|images|_next/static|_next/image).*)',
+        source: '/_vercel/:path*',
+        headers: [
+          // Allow Vercel's own scripts to load without restrictions
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src *",
+          },
+        ],
+      },
+      
+      {
+        source: '/((?!favicon|images|_next/static|_next/image|_vercel).*)',
         headers: [
           // === HEADERS DE SÉCURITÉ RENFORCÉS ===
           
