@@ -74,7 +74,8 @@ export class SecureEncryptionService {
       // Enhanced client-side detection
       if (typeof window !== 'undefined' || typeof process === 'undefined' || !process.env) {
         log.warn('⚠️  Client environment detected - security services limited')
-        // Skip full initialization on client side
+        // Skip full initialization on client side - set minimal state
+        this.masterKey = null
         return
       }
 
@@ -104,9 +105,23 @@ export class SecureEncryptionService {
       log.info('🔒 Secure encryption system initialized')
       
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error)
       log.error('🚨 CRITICAL: Failed to initialize encryption system', { 
-        error: error instanceof Error ? error.message : String(error)
+        error: errorMessage
+      }, {
+        isClientSide: typeof window !== 'undefined',
+        hasProcess: typeof process !== 'undefined',
+        nodeEnv: typeof process !== 'undefined' ? process.env?.NODE_ENV : 'unknown'
       })
+      
+      // On client side, don't throw - just log and continue with limited functionality
+      if (typeof window !== 'undefined') {
+        log.warn('⚠️  Client-side encryption initialization failed - continuing with limited security')
+        this.masterKey = null
+        return
+      }
+      
+      // On server side, this is critical
       throw error
     }
   }
@@ -289,6 +304,12 @@ export class SecureEncryptionService {
       return plaintext
     }
 
+    // Client-side fallback: return data with client marker
+    if (typeof window !== 'undefined') {
+      log.warn('⚠️  Client-side encryption requested - returning data with temp marker')
+      return `temp_encrypted:${Buffer.from(plaintext).toString('base64')}`
+    }
+
     try {
       this.ensureInitialized()
       this.operationCount++
@@ -349,13 +370,20 @@ export class SecureEncryptionService {
       return encryptedData
     }
 
+    // Handle temp encrypted data (client-side or fallback)
+    if (encryptedData.startsWith('temp_encrypted:')) {
+      const encoded = encryptedData.replace('temp_encrypted:', '')
+      return Buffer.from(encoded, 'base64').toString('utf8')
+    }
+
+    // Client-side fallback: can't decrypt real encrypted data
+    if (typeof window !== 'undefined') {
+      log.warn('⚠️  Client-side decryption attempted - returning data as-is')
+      return encryptedData
+    }
+
     try {
       this.ensureInitialized()
-      // Support legacy formats for backward compatibility
-      if (encryptedData.startsWith('temp_encrypted:')) {
-        const encoded = encryptedData.replace('temp_encrypted:', '')
-        return Buffer.from(encoded, 'base64').toString('utf8')
-      }
 
       // Legacy v1 format: iv:authTag:encryptedData (3 parts)
       if (!encryptedData.startsWith('v2:')) {

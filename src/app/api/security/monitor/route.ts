@@ -12,7 +12,7 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { generateSecurityReport, getSecurityMetrics, securityMonitor } from '@/lib/chatbot/security/security-monitor'
-import { validateEnvironment, envValidator } from '@/lib/chatbot/security/env-validator'
+import { validateEnvironment, getEnvValidator } from '@/lib/chatbot/security/env-validator'
 import { log } from '@/lib/logger'
 
 // IPs autorisées pour accéder au monitoring (à configurer selon l'environnement)
@@ -87,7 +87,7 @@ export async function GET(request: NextRequest) {
             warningCount: envValidation.warnings.length,
             securityIssueCount: envValidation.securityIssues.length
           },
-          configReport: envValidator.getConfigReport()
+          configReport: getEnvValidator().getConfigReport()
         }
         break
 

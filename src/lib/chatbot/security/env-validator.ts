@@ -31,6 +31,14 @@ interface EnvValidationResult {
 // Règles de validation pour chaque variable d'environnement
 const ENV_VALIDATION_RULES: Record<string, EnvRule> = {
   // Variables de sécurité critiques
+  CHAT_MASTER_SECRET: {
+    required: true, // En production
+    minLength: 32,
+    maxLength: 128,
+    sensitive: true,
+    description: 'Clé maîtresse de sécurité (minimum 32 caractères)'
+  },
+  
   CHAT_ENCRYPTION_KEY: {
     required: true, // En production
     pattern: /^[a-fA-F0-9]{64}$/,
@@ -375,15 +383,17 @@ class EnvironmentValidator {
   }
 }
 
-// Instance singleton
-export const envValidator = EnvironmentValidator.getInstance()
+// Factory function to prevent client-side initialization
+export function getEnvValidator(): EnvironmentValidator {
+  return EnvironmentValidator.getInstance()
+}
 
 // Fonction utilitaire pour validation rapide
 export function validateEnvironment(): EnvValidationResult {
-  return envValidator.validateAll()
+  return getEnvValidator().validateAll()
 }
 
 // Fonction utilitaire pour obtenir une variable sécurisée
 export function getSecureEnvVar(key: string, defaultValue?: string): string | undefined {
-  return envValidator.getEnvVar(key, defaultValue)
+  return getEnvValidator().getEnvVar(key, defaultValue)
 }

@@ -9,7 +9,7 @@
  */
 
 import { log, LogContext } from '@/lib/logger'
-import { envValidator } from './env-validator'
+import { getEnvValidator } from './env-validator'
 import { SecureEncryptionUtils } from './encryption-service'
 
 // Types pour le monitoring
@@ -250,7 +250,7 @@ export class SecurityMonitor {
   monitorSystemIntegrity(): void {
     try {
       // Vérifier les variables d'environnement
-      const envValidation = envValidator.validateAll()
+      const envValidation = getEnvValidator().validateAll()
       if (!envValidation.isValid || envValidation.securityIssues.length > 0) {
         // En développement, réduire la sévérité pour les problèmes d'environnement
         const severity = this.isDevelopment ? SecuritySeverity.LOW : SecuritySeverity.CRITICAL
@@ -417,7 +417,7 @@ export class SecurityMonitor {
       metrics,
       topThreats,
       systemStatus: {
-        environmentSecure: envValidator.validateAll().isValid,
+        environmentSecure: getEnvValidator().validateAll().isValid,
         totalThreats: this.threatProfiles.size,
         activeBlocks: metrics.blockedIPs
       }
