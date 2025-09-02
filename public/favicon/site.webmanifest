@@ -1,0 +1,21 @@
+{
+  "name": "Le Pitch Qu'il Vous Faut",
+  "short_name": "Le Pitch",
+  "description": "Transformez votre prise de parole en arme de persuasion massive",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#7C3AED",
+  "icons": [
+    {
+      "src": "/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
