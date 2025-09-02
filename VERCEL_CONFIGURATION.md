@@ -10,16 +10,12 @@ Votre application nécessite les variables d'environnement suivantes sur Vercel 
 **Format** : Minimum 32 caractères, idéalement 64 caractères hexadécimaux
 **Criticité** : CRITIQUE - L'application ne démarrera pas sans cette variable en production
 
-### 2. CHAT_ENCRYPTION_KEY
-**Description** : Clé de chiffrement secondaire pour les données sensibles
-**Format** : 64 caractères alphanumériques
-**Exemple** : Générer avec : `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
 
-### 3. RESEND_API_KEY (Optionnel)
+### 2. RESEND_API_KEY (Optionnel)
 **Description** : Clé API pour l'envoi d'emails via Resend
 **Obtenir** : https://resend.com/api-keys
 
-### 4. OPENROUTER_API_KEY (Optionnel)
+### 3. OPENROUTER_API_KEY (Optionnel)
 **Description** : Clé API pour l'IA du chatbot
 **Obtenir** : https://openrouter.ai/keys
 
@@ -55,6 +51,16 @@ NEXT_PUBLIC_CHAT_ENABLED=true
 # Logging
 LOG_LEVEL=warn
 ```
+
+## Architecture de Sécurité
+
+**CHAT_MASTER_SECRET** utilise une architecture de sécurité avancée :
+- ✅ **Génération de clés dynamiques** : Clés opérationnelles générées à la demande
+- ✅ **Rotation automatique** : Renouvellement toutes les 24h  
+- ✅ **HSM-ready** : Compatible avec les modules de sécurité matériels
+- ✅ **Pas de clé statique** : Plus sécurisé qu'une clé fixe
+
+Cette approche remplace l'ancienne `CHAT_ENCRYPTION_KEY` statique.
 
 ## Sécurité
 

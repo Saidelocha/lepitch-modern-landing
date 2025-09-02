@@ -36,16 +36,7 @@ const ENV_VALIDATION_RULES: Record<string, EnvRule> = {
     minLength: 32,
     maxLength: 128,
     sensitive: true,
-    description: 'Clé maîtresse de sécurité (minimum 32 caractères)'
-  },
-  
-  CHAT_ENCRYPTION_KEY: {
-    required: true, // En production
-    pattern: /^[a-fA-F0-9]{64}$/,
-    minLength: 64,
-    maxLength: 64,
-    sensitive: true,
-    description: 'Clé de chiffrement AES-256 (64 caractères hexadécimaux)'
+    description: 'Clé maîtresse de sécurité (minimum 32 caractères) - génère toutes les clés opérationnelles'
   },
 
   // API Keys sensibles
@@ -276,17 +267,8 @@ class EnvironmentValidator {
       result.warnings.push('⚠️  RESEND_API_KEY défini mais pas LEAD_NOTIFICATION_EMAIL')
     }
 
-    // En production, CHAT_ENCRYPTION_KEY est obligatoire
-    if (this.isProduction && !process.env['CHAT_ENCRYPTION_KEY']) {
-      result.isValid = false
-      result.errors.push('❌ CHAT_ENCRYPTION_KEY obligatoire en production')
-    }
-    
     // En développement, juste des warnings pour les dépendances importantes
     if (!this.isProduction) {
-      if (!process.env['CHAT_ENCRYPTION_KEY']) {
-        result.warnings.push('⚠️  CHAT_ENCRYPTION_KEY manquante - utilisation d\'une clé temporaire en développement')
-      }
       if (!process.env['OPENROUTER_API_KEY']) {
         result.warnings.push('⚠️  OPENROUTER_API_KEY manquante - fonctionnalités IA limitées en développement')
       }
