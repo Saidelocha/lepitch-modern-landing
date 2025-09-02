@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { CollectedInfo } from '../chat'
-import { enhancedEncryptionService } from '../security'
+import { getEnhancedEncryptionService } from '../security'
 import { EnhancedBusinessExtractor } from './enhanced-business-extractor'
 import { logger } from '@/lib/logger'
 
@@ -70,7 +70,7 @@ export class EnhancedSurveyHandler {
         : null
       
       // Chiffrement des données personnelles avec le service amélioré
-      const encryptedContact = enhancedEncryptionService.encrypt(validatedData.contact)
+      const encryptedContact = getEnhancedEncryptionService().encrypt(validatedData.contact)
       
       // Stockage sécurisé avec analyse
       surveyDataStorage.set(sessionId, {
@@ -151,7 +151,7 @@ export class EnhancedSurveyHandler {
       }
       
       // Déchiffrement des données personnelles
-      const decryptedContact = enhancedEncryptionService.decrypt(storedData.data.contact)
+      const decryptedContact = getEnhancedEncryptionService().decrypt(storedData.data.contact)
       
       return {
         success: true,

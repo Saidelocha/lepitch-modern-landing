@@ -31,7 +31,13 @@ export type {
 } from './security-commands'
 export { RefactoredSecurityManager } from './refactored-security-manager'
 export { ClientBanManager } from './client-ban-manager'
-export { EnhancedEncryptionService, enhancedEncryptionService, EncryptionUtils } from './encryption-service'
+export { 
+  EnhancedEncryptionService, 
+  getEnhancedEncryptionService,
+  getSecureEncryptionService,
+  EncryptionUtils,
+  SecureEncryptionUtils 
+} from './encryption-service'
 
 // Backwards compatibility note: Old SecurityManager has been replaced by RefactoredSecurityManager
 

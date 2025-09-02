@@ -71,8 +71,8 @@ export class SecureEncryptionService {
    */
   private initializeSecureKeySystem(): void {
     try {
-      // Check if we're in a valid Node.js environment for security operations
-      if (typeof process === 'undefined' || !process.env) {
+      // Enhanced client-side detection
+      if (typeof window !== 'undefined' || typeof process === 'undefined' || !process.env) {
         log.warn('⚠️  Client environment detected - security services limited')
         // Skip full initialization on client side
         return
@@ -611,11 +611,16 @@ export class SecureEncryptionService {
   }
 }
 
-// Instance singleton - VULN-001 FIX
-export const secureEncryptionService = SecureEncryptionService.getInstance()
+// Factory functions to prevent client-side initialization
+export function getSecureEncryptionService(): SecureEncryptionService {
+  return SecureEncryptionService.getInstance()
+}
 
-// Legacy compatibility
-export const enhancedEncryptionService = secureEncryptionService
+// Legacy compatibility functions
+export function getEnhancedEncryptionService(): SecureEncryptionService {
+  return getSecureEncryptionService()
+}
+
 export { SecureEncryptionService as EnhancedEncryptionService }
 
 /**
@@ -626,13 +631,13 @@ export const SecureEncryptionUtils = {
    * Encrypt data with context
    */
   encrypt: (data: string, context: string = 'default'): string => 
-    secureEncryptionService.encrypt(data, context),
+    getSecureEncryptionService().encrypt(data, context),
 
   /**
    * Decrypt data with context
    */
   decrypt: (encryptedData: string, context: string = 'default'): string => 
-    secureEncryptionService.decrypt(encryptedData, context),
+    getSecureEncryptionService().decrypt(encryptedData, context),
 
   /**
    * VULN-004 FIX: Enhanced secure masking for logs
@@ -713,4 +718,5 @@ export const SecureEncryptionUtils = {
 // Legacy compatibility
 export const EncryptionUtils = SecureEncryptionUtils
 
-export default secureEncryptionService
+// Default export as factory function
+export default getSecureEncryptionService
