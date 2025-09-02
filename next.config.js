@@ -3,7 +3,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: '/((?!favicon|images|_next/static|_next/image).*)',
         headers: [
           // === HEADERS DE SÉCURITÉ RENFORCÉS ===
           
@@ -176,6 +176,36 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value: "default-src 'none'; img-src 'self'",
+          },
+        ],
+      },
+      
+      // === HEADERS POUR PWA ET FAVICON ===
+      {
+        source: '/favicon/:path*',
+        headers: [
+          // Cache approprié pour PWA
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, must-revalidate',
+          },
+          
+          // Autoriser l'accès cross-origin pour PWA
+          {
+            key: 'Cross-Origin-Resource-Policy',
+            value: 'cross-origin',
+          },
+          
+          // Type MIME correct pour webmanifest
+          {
+            key: 'Content-Type',
+            value: 'application/manifest+json',
+          },
+          
+          // CSP permissif pour les manifests
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'none'; manifest-src 'self'",
           },
         ],
       },
