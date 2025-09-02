@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { TRUST_INDICATORS, CONTACT } from '@/lib/constants'
 import SpotsLeftBadge from '@/components/ui/SpotsLeftBadge'

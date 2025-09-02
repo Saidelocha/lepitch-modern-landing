@@ -77,34 +77,86 @@ export default function RootLayout({
           `
         }} />
         
-        {/* Structured Data */}
+        {/* Enhanced Structured Data with multiple schema types */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              "name": "Le Pitch Qu'il Vous Faut",
-              "description": "Coaching personnalisé pour entrepreneurs - Maîtrisez l'art du pitch parfait",
-              "url": "https://lepitchquilvousfaut.fr",
-              "telephone": "+33612345678",
-              "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "FR"
-              },
-              "priceRange": "€€€",
-              "founder": {
-                "@type": "Person",
-                "name": "Léo Barcet",
-                "jobTitle": "Coach en prise de parole",
-                "alumniOf": ["Cours Florent", "Sorbonne Nouvelle"]
-              },
-              "serviceType": [
-                "Coaching en prise de parole",
-                "Formation pitch",
-                "Coaching entrepreneur"
-              ],
-              "areaServed": "France"
+              "@graph": [
+                {
+                  "@type": "ProfessionalService",
+                  "@id": "https://lepitchquilvousfaut.fr/#business",
+                  "name": "Le Pitch Qu'il Vous Faut",
+                  "description": "Coaching personnalisé pour entrepreneurs - Transformez votre prise de parole en arme de persuasion massive",
+                  "url": "https://lepitchquilvousfaut.fr",
+                  "telephone": "+33612345678",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "FR",
+                    "addressLocality": "France"
+                  },
+                  "priceRange": "75€-1295€",
+                  "founder": {
+                    "@type": "Person",
+                    "@id": "https://lepitchquilvousfaut.fr/#leo-barcet",
+                    "name": "Léo Barcet",
+                    "jobTitle": "Coach en prise de parole et formateur",
+                    "alumniOf": ["Cours Florent", "Sorbonne Nouvelle"],
+                    "hasOccupation": {
+                      "@type": "Occupation",
+                      "name": "Coach en prise de parole",
+                      "occupationLocation": {
+                        "@type": "Country",
+                        "name": "France"
+                      }
+                    }
+                  },
+                  "serviceType": [
+                    "Coaching en prise de parole",
+                    "Formation pitch entrepreneur", 
+                    "Coaching présentation investisseur",
+                    "Formation storytelling"
+                  ],
+                  "areaServed": {
+                    "@type": "Country",
+                    "name": "France"
+                  },
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Services de coaching pitch",
+                    "itemListElement": [
+                      {
+                        "@type": "Offer",
+                        "name": "L'ESSENTIEL",
+                        "description": "Diagnostic personnalisé avec conseils ciblés",
+                        "price": "75",
+                        "priceCurrency": "EUR"
+                      },
+                      {
+                        "@type": "Offer",
+                        "name": "LE PITCH", 
+                        "description": "Pitch personnalisé complet avec méthode S.C.E.N.E.",
+                        "price": "495",
+                        "priceCurrency": "EUR"
+                      }
+                    ]
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "5",
+                    "reviewCount": "50",
+                    "bestRating": "5"
+                  }
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://lepitchquilvousfaut.fr/#website",
+                  "url": "https://lepitchquilvousfaut.fr",
+                  "name": "Le Pitch Qu'il Vous Faut",
+                  "inLanguage": "fr-FR"
+                }
+              ]
             })
           }}
         />

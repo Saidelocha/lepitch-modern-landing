@@ -1,5 +1,3 @@
-'use client'
-
 import Hero from '@/components/sections/Hero'
 import Identification from '@/components/sections/Identification'
 import ValueProposition from '@/components/sections/ValueProposition'
@@ -15,26 +13,11 @@ import Footer from '@/components/layout/Footer'
 import MobileHeader from '@/components/conversion/MobileHeader'
 import ExitIntentPopup from '@/components/conversion/ExitIntentPopup'
 import LiveChat from '@/components/conversion/LiveChat'
-import { useScrollTracking } from '@/hooks/useScrollTracking'
+import ScrollTracker from '@/components/analytics/ScrollTracker'
 import Image from 'next/image'
-import { logger } from '@/lib/logger'
 import PricingPersonalized from '@/components/sections/PricingPersonalized'
 
 export default function HomePage() {
-  // Track scroll behavior and section views
-  useScrollTracking({
-    thresholds: [25, 50, 75, 90, 100],
-    onScrollDepth: (depth) => {
-      if (process.env.NODE_ENV === 'development') {
-        logger.info(`User scrolled to ${depth}%`, { metadata: { scrollDepth: depth } })
-      }
-    },
-    onSectionView: (sectionId, depth) => {
-      if (process.env.NODE_ENV === 'development') {
-        logger.info(`Section viewed`, { metadata: { sectionId, scrollDepth: depth } })
-      }
-    }
-  })
 
   return (
     <>
@@ -77,6 +60,7 @@ export default function HomePage() {
       <Footer />
       <ExitIntentPopup />
       <LiveChat />
+      <ScrollTracker />
     </>
   )
 }

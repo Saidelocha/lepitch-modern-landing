@@ -1,3 +1,5 @@
+'use client'
+
 import { useImageRotation } from '@/hooks/useImageRotation'
 
 export default function About() {
