@@ -232,10 +232,21 @@ const nextConfig = {
             value: 'application/manifest+json',
           },
           
-          // CSP permissif pour les manifests
+          // CSP optimisé pour PWA manifests
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'none'; manifest-src 'self'",
+            value: "default-src 'self'; manifest-src 'self' *; script-src 'none'; style-src 'none'",
+          },
+          
+          // Headers CORS pour PWA
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+          
+          {
+            key: 'Access-Control-Allow-Methods',
+            value: 'GET, OPTIONS',
           },
         ],
       },
