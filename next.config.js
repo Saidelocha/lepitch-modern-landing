@@ -40,7 +40,7 @@ const nextConfig = {
           // Désactivation des APIs sensibles (optimisé pour landing page)
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=(), interest-cohort=()',
+            value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()',
           },
           
           // Protection XSS pour les navigateurs anciens
