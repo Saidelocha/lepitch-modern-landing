@@ -5,7 +5,6 @@ import ProblemSolution from '@/components/sections/ProblemSolution'
 import Method from '@/components/sections/Method'
 import Testimonials from '@/components/sections/Testimonials'
 import About from '@/components/sections/About'
-import ConsequencesOfInaction from '@/components/sections/ConsequencesOfInaction'
 import FAQ from '@/components/sections/FAQ'
 import FinalCTA from '@/components/sections/FinalCTA'
 import Header from '@/components/layout/Header'
@@ -52,7 +51,6 @@ export default function HomePage() {
         <Testimonials />
         <About />
         <PricingPersonalized />
-        <ConsequencesOfInaction />
         <FAQ />
         <FinalCTA />
       </main>
