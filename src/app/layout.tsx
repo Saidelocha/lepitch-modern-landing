@@ -62,6 +62,16 @@ export default function RootLayout({
   return (
     <html lang="fr" className={inter.variable}>
       <head>
+        {/* Performance hints - preconnect to critical external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://va.vercel-scripts.com" />
+        <link rel="preconnect" href="https://vitals.vercel-insights.com" />
+        
+        {/* DNS prefetch for secondary domains */}
+        <link rel="dns-prefetch" href="https://vercel.live" />
+        <link rel="dns-prefetch" href="https://crisp.chat" />
+        
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
         <link rel="apple-touch-icon" sizes="32x32" href="/favicon/favicon-32x32.png" />

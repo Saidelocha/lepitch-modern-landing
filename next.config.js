@@ -55,85 +55,35 @@ const nextConfig = {
             value: 'max-age=31536000; includeSubDomains; preload',
           },
           
-          // === CONTENT SECURITY POLICY (CSP) ===
+          // === CONTENT SECURITY POLICY (CSP) optimisé ===
           {
             key: 'Content-Security-Policy',
             value: [
-              // Scripts : uniquement sources sécurisées + Next.js
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://vercel.live https://assets.zyrosite.com",
-              
-              // Styles : Tailwind et inline pour Next.js
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://vercel.live",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              
-              // Images : optimisées + CDN
-              "img-src 'self' data: blob: https://assets.zyrosite.com https://vercel.com",
-              
-              // Fonts : Google Fonts + locales
+              "img-src 'self' data: blob:",
               "font-src 'self' https://fonts.gstatic.com",
-              
-              // Connexions : APIs autorisées seulement
-              "connect-src 'self' https://va.vercel-scripts.com https://vercel.live https://vitals.vercel-insights.com wss://ws-us3.pusher.com https://crisp.chat https://client.crisp.chat https://openrouter.ai",
-              
-              // Frames : désactivés complètement
+              "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://crisp.chat https://client.crisp.chat",
               "frame-src 'none'",
-              
-              // Objects : désactivés (Flash, etc.)
               "object-src 'none'",
-              
-              // Media : local seulement
-              "media-src 'self'",
-              
-              // Workers : local seulement  
-              "worker-src 'self'",
-              
-              // Manifests : local seulement
-              "manifest-src 'self'",
-              
-              // Formulaires : même origine ou HTTPS
-              "form-action 'self' https:",
-              
-              // Navigation : même origine
-              "frame-ancestors 'none'",
-              
-              // Base URI : même origine
               "base-uri 'self'",
-              
-              // Upgrade HTTP vers HTTPS
               "upgrade-insecure-requests"
             ].join('; '),
           },
           
           // === HEADERS DE SÉCURITÉ SUPPLÉMENTAIRES ===
           
-          // Protection contre les attaques de timing
-          {
-            key: 'Cross-Origin-Embedder-Policy',
-            value: 'credentialless',
-          },
-          
-          // Isolation des origines
+          // Cross-Origin policies optimisées
           {
             key: 'Cross-Origin-Opener-Policy',
             value: 'same-origin',
           },
           
-          // Politique de ressources cross-origin
-          {
-            key: 'Cross-Origin-Resource-Policy',
-            value: 'same-site',
-          },
-          
-          // Header serveur masqué pour la sécurité
-          {
-            key: 'Server',
-            value: 'LePitch-SecureServer/1.0',
-          },
-          
-          // Désactivation du cache pour les pages sensibles
+          // Cache optimisé pour les performances (landing page)
           {
             key: 'Cache-Control',
-            value: 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
+            value: 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800',
           },
         ],
       },
