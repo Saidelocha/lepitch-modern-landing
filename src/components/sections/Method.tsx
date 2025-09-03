@@ -46,18 +46,18 @@ export default function Method() {
         </svg>
       </div>
       
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-6 sm:px-8">
         <div className="text-center mb-12 lg:mb-16 animate-fade-in-up">
-          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-neutral-900 mb-4">
+          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-neutral-900 mb-4 break-words">
             La Méthode <span className="text-gradient-primary">S.C.E.N.E.</span> - Votre arme secrète
           </h2>
-          <p className="text-xl text-neutral-600 font-medium">
+          <p className="text-lg sm:text-xl text-neutral-600 font-medium break-words">
             Stratégie de Communication Émotionnelle Naturelle et Efficace
           </p>
         </div>
 
         {/* S.C.E.N.E. Letters Display */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8 mb-16">
           {METHOD_STEPS.map((step, index) => {
             // Map each step to its specific image
             const imageMapping: Record<number, string> = {
@@ -88,10 +88,10 @@ export default function Method() {
                     </div>
                   </div>
                 </div>
-                <h3 id={`method-${step.id}-title`} className="text-xl font-bold text-neutral-900 mb-3 group-focus-within:text-primary-600 transition-colors duration-300">
+                <h3 id={`method-${step.id}-title`} className="text-lg sm:text-xl font-bold text-neutral-900 mb-3 group-focus-within:text-primary-600 transition-colors duration-300 break-words">
                   {step.title}
                 </h3>
-                <p id={`method-${step.id}-desc`} className="text-neutral-600 text-sm lg:text-base leading-relaxed group-focus-within:text-neutral-700 transition-colors duration-300">
+                <p id={`method-${step.id}-desc`} className="text-neutral-600 text-sm lg:text-base leading-relaxed group-focus-within:text-neutral-700 transition-colors duration-300 break-words">
                   {step.description}
                 </p>
               </div>
@@ -102,21 +102,23 @@ export default function Method() {
         {/* 5 Pillars Section */}
         <div className="mt-16 lg:mt-20">
           <div className="text-center mb-12">
-            <h3 className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-4">
+            <h3 className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-4 break-words">
               Cette méthode unique se base sur <span className="text-primary-600">5 piliers</span>
             </h3>
-            <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-neutral-600 max-w-3xl mx-auto break-words">
               Basée sur 15 ans d'expérience comme acteur, metteur en scène et professeur de théâtre
             </p>
           </div>
 
           <div className="max-w-6xl mx-auto">
-            {/* Première rangée - 3 éléments */}
-            <div className="flex flex-wrap justify-center gap-6 mb-6">
-              {pillars.slice(0, 3).map((pillar, index) => (
+            {/* Grid responsive pour les 5 piliers */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {pillars.map((pillar, index) => (
                 <article 
                   key={index}
-                  className="group relative bg-white/70 backdrop-blur-sm border border-neutral-200/50 rounded-2xl p-6 focus-within:shadow-xl transition-shadow duration-300 animate-fade-in-up w-full sm:w-80 lg:w-72"
+                  className={`group relative bg-white/70 backdrop-blur-sm border border-neutral-200/50 rounded-2xl p-6 focus-within:shadow-xl transition-shadow duration-300 animate-fade-in-up ${
+                    index === 4 ? 'sm:col-span-2 lg:col-span-1 lg:col-start-2' : ''
+                  }`}
                   style={{animationDelay: `${index * 0.1}s`}}
                   role="article"
                   aria-labelledby={`pillar-${index}-title`}
@@ -124,62 +126,22 @@ export default function Method() {
                   <div className="absolute inset-0 bg-gradient-subtle rounded-2xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
                   
                   <div className="relative z-10 text-center">
-                    <div className="relative w-24 h-24 mx-auto mb-4 rounded-xl overflow-hidden bg-white shadow-md">
-                      <Image
-                        src={pillar.image}
-                        alt={`Icône ${pillar.title}`}
-                        fill
-                        className="object-cover"
-                        sizes="(min-width: 1024px) 96px, (min-width: 768px) 80px, 64px"
-                        quality={95}
-                        priority={index < 2}
-                      />
-                    </div>
-                    <h4 id={`pillar-${index}-title`} className="text-lg font-bold text-neutral-900 mb-2 group-focus-within:text-primary-600 transition-colors duration-300">
-                      {pillar.title}
-                    </h4>
-                    <p className="text-neutral-600 text-sm">
-                      {pillar.description}
-                    </p>
-                  </div>
-
-                  {/* Arrow pointer */}
-                  <div className="absolute top-4 right-4 text-primary-300 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300" aria-hidden="true">
-                    👉
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            {/* Deuxième rangée - 2 éléments centrés */}
-            <div className="flex flex-wrap justify-center gap-6">
-              {pillars.slice(3).map((pillar, index) => (
-                <article 
-                  key={index + 3}
-                  className="group relative bg-white/70 backdrop-blur-sm border border-neutral-200/50 rounded-2xl p-6 focus-within:shadow-xl transition-shadow duration-300 animate-fade-in-up w-full sm:w-80 lg:w-72"
-                  style={{animationDelay: `${(index + 3) * 0.1}s`}}
-                  role="article"
-                  aria-labelledby={`pillar-${index + 3}-title`}
-                >
-                  <div className="absolute inset-0 bg-gradient-subtle rounded-2xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
-                  
-                  <div className="relative z-10 text-center">
-                    <div className="relative w-24 h-24 mx-auto mb-4 rounded-xl overflow-hidden bg-white shadow-md">
+                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 rounded-xl overflow-hidden bg-white shadow-md">
                       <Image
                         src={pillar.image}
                         alt={`Icône ${pillar.title}`}
                         fill
                         className={`object-cover ${pillar.title === 'Psychologie cognitive' ? 'object-left-bottom' : 'object-center'}`}
                         style={pillar.title === 'Psychologie cognitive' ? { objectPosition: '80% 20%' } : {}}
-                        sizes="(min-width: 1024px) 96px, (min-width: 768px) 80px, 64px"
+                        sizes="(min-width: 640px) 96px, 80px"
                         quality={95}
                         priority={index < 2}
                       />
                     </div>
-                    <h4 id={`pillar-${index + 3}-title`} className="text-lg font-bold text-neutral-900 mb-2 group-focus-within:text-primary-600 transition-colors duration-300">
+                    <h4 id={`pillar-${index}-title`} className="text-base sm:text-lg font-bold text-neutral-900 mb-2 group-focus-within:text-primary-600 transition-colors duration-300 break-words">
                       {pillar.title}
                     </h4>
-                    <p className="text-neutral-600 text-sm">
+                    <p className="text-neutral-600 text-sm break-words">
                       {pillar.description}
                     </p>
                   </div>

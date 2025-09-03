@@ -44,10 +44,10 @@ export default function ProblemSolution() {
     <section id="problem-solution" className="relative py-16 lg:py-24 bg-white overflow-hidden">
       
       
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-6 sm:px-8">
         {/* Section Header */}
         <div className="text-center mb-12 animate-fade-in-up">
-          <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-4 break-words">
             Le moment de vérité : <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">Subir ou Agir ?</span>
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto font-medium">

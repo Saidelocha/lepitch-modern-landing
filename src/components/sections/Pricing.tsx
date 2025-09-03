@@ -30,12 +30,12 @@ export default function Pricing() {
         </svg>
       </div>
       
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-6 sm:px-8">
         <div className="text-center mb-12 lg:mb-16">
-          <h2 id="pricing-title" className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
+          <h2 id="pricing-title" className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 break-words">
             Choisissez votre parcours
           </h2>
-          <p id="pricing-description" className="text-xl text-gray-600 mb-4">
+          <p id="pricing-description" className="text-lg sm:text-xl text-gray-600 mb-4 break-words">
             {SCARCITY.qualityFocus}
           </p>
           <SpotsLeftBadge variant="pricing" />
@@ -49,9 +49,9 @@ export default function Pricing() {
             return (
               <article
                 key={offer.id}
-                className={`group relative bg-white rounded-2xl shadow-xl p-6 lg:p-8 transition-all duration-300 focus-within:shadow-2xl ${
+                className={`group relative bg-white rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 transition-all duration-300 focus-within:shadow-2xl ${
                   offer.featured 
-                    ? 'border-2 border-primary-600 transform scale-105 bg-gradient-to-br from-white to-primary-50/30 focus-within:border-primary-700' 
+                    ? 'border-2 border-primary-600 lg:transform lg:scale-105 bg-gradient-to-br from-white to-primary-50/30 focus-within:border-primary-700' 
                     : 'border border-gray-200 focus-within:border-primary-300'
                 } flex flex-col`}
                 role="listitem"
@@ -92,15 +92,15 @@ export default function Pricing() {
 
                 {/* Header */}
                 <div className="text-center mb-4">
-                  <h3 id={`offer-${offer.id}-name`} className="text-2xl font-bold text-gray-900 mb-3 group-focus-within:text-primary-600 transition-colors duration-300">
+                  <h3 id={`offer-${offer.id}-name`} className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 group-focus-within:text-primary-600 transition-colors duration-300 break-words">
                     {offer.name}
                   </h3>
                   <div className="mb-3">
-                    <span className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent" aria-label={`Prix: ${offer.price} euros`}>
+                    <span className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent" aria-label={`Prix: ${offer.price} euros`}>
                       {offer.price}€
                     </span>
                   </div>
-                  <p id={`offer-${offer.id}-description`} className="text-gray-600 text-sm leading-relaxed mx-auto">{description}</p>
+                  <p id={`offer-${offer.id}-description`} className="text-gray-600 text-sm leading-relaxed mx-auto break-words">{description}</p>
                 </div>
 
                 {/* Features */}
@@ -117,7 +117,7 @@ export default function Pricing() {
                       >
                         <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                       </svg>
-                      <span className="text-gray-700 text-sm lg:text-base leading-relaxed">{feature}</span>
+                      <span className="text-gray-700 text-sm lg:text-base leading-relaxed break-words">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -143,7 +143,7 @@ export default function Pricing() {
                 {/* CTA */}
                 <Link
                   href={offer.ctaLink}
-                  className={`block w-full text-center font-semibold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 min-h-[44px] ${
+                  className={`block w-full text-center font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-xl transition-all duration-300 shadow-lg focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 min-h-[48px] text-sm sm:text-base break-words ${
                     offer.featured
                       ? 'bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 focus:from-primary-700 focus:to-secondary-700 text-white'
                       : 'bg-gradient-to-r from-gray-100 to-gray-200 hover:from-primary-100 hover:to-secondary-100 focus:from-primary-100 focus:to-secondary-100 text-gray-900 hover:text-primary-700 focus:text-primary-700'

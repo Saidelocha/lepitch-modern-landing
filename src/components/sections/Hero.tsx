@@ -13,7 +13,7 @@ export default function Hero() {
       aria-describedby="hero-description"
     >
       
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-6 sm:px-8">
         {/* Urgency Banner - Compact */}
         <div className="text-center mb-6 animate-fade-in-down">
           <SpotsLeftBadge variant="hero" />
@@ -21,10 +21,10 @@ export default function Hero() {
 
         {/* Main Headline - Centered */}
         <div className="text-center max-w-4xl mx-auto mb-8 animate-fade-in-up">
-          <h1 id="hero-headline" className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
-            <span className="text-gradient-primary">+40% de deals</span> dès le mois prochain
+          <h1 id="hero-headline" className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6 drop-shadow-lg break-words">
+            <span className="text-gradient-primary break-words">+40% de deals</span> dès le mois prochain
           </h1>
-          <p id="hero-description" className="text-xl lg:text-2xl text-white/90 font-medium drop-shadow-md">
+          <p id="hero-description" className="text-lg sm:text-xl lg:text-2xl text-white/90 font-medium drop-shadow-md break-words">
             Méthode exclusive garantie 30 jours ou remboursé
           </p>
         </div>
@@ -64,21 +64,21 @@ export default function Hero() {
         </div>
 
         {/* Premium CTA Button - Priority Position */}
-        <div className="text-center mb-8 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+        <div className="text-center mb-8 animate-fade-in-up px-4" style={{animationDelay: '0.2s'}}>
           <Link
             href={CONTACT.bookingUrl}
-            className="group relative inline-block gradient-cta hover:gradient-cta-hover focus:gradient-cta-hover text-white font-bold py-6 px-12 lg:py-8 lg:px-16 rounded-2xl text-xl lg:text-2xl transition-all duration-300 shadow-2xl hover:shadow-3xl focus:shadow-3xl ring-primary-glow focus:outline-none"
+            className="group relative inline-block gradient-cta hover:gradient-cta-hover focus:gradient-cta-hover text-white font-bold py-4 px-6 sm:py-6 sm:px-12 lg:py-8 lg:px-16 rounded-2xl text-base sm:text-xl lg:text-2xl transition-all duration-300 shadow-2xl hover:shadow-3xl focus:shadow-3xl ring-primary-glow focus:outline-none min-h-[48px] min-w-[48px]"
             aria-label="Réserver votre séance de coaching gratuite de 30 minutes maintenant"
           >
-            <span className="relative z-10 flex items-center justify-center gap-3">
-              🎯 Réservez votre séance GRATUITE
-              <svg className="w-6 h-6 transition-transform group-hover:translate-x-2 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 break-words">
+              🎯 <span className="break-words">Réservez votre séance GRATUITE</span>
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover:translate-x-2 group-hover:scale-110 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300" aria-hidden="true"></div>
           </Link>
-          <p className="text-sm text-white/80 mt-4 animate-fade-in drop-shadow-md">⚡ Séance de 30 min • Sans engagement</p>
+          <p className="text-sm text-white/80 mt-4 animate-fade-in drop-shadow-md break-words">⚡ Séance de 30 min • Sans engagement</p>
         </div>
 
         {/* Enhanced Benefits */}
@@ -103,9 +103,9 @@ export default function Hero() {
         </div>
 
         {/* Trust Indicators */}
-        <div className="max-w-2xl mx-auto animate-fade-in-up" style={{animationDelay: '0.6s'}} role="region" aria-labelledby="trust-indicators-title">
+        <div className="max-w-2xl mx-auto animate-fade-in-up px-4" style={{animationDelay: '0.6s'}} role="region" aria-labelledby="trust-indicators-title">
           <h2 id="trust-indicators-title" className="sr-only">Indicateurs de confiance</h2>
-          <div className="grid grid-cols-3 gap-4 lg:gap-8 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-8 text-center">
             {TRUST_INDICATORS.map((indicator, index) => (
               <article 
                 key={index} 
@@ -117,13 +117,13 @@ export default function Hero() {
               >
                 <div 
                   id={`trust-${index}-value`}
-                  className="text-2xl lg:text-3xl font-bold text-gradient-primary mb-2"
+                  className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient-primary mb-2 break-words"
                 >
                   {indicator.value}
                 </div>
                 <div 
                   id={`trust-${index}-label`}
-                  className="text-sm lg:text-base text-neutral-600 font-medium"
+                  className="text-sm lg:text-base text-neutral-600 font-medium break-words"
                 >
                   {indicator.label}
                 </div>

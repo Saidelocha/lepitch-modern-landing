@@ -28,7 +28,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Mobile-first typography scale */
+/* Mobile-first typography scale with minimum sizes */
 @media (max-width: 640px) {
   h1 {
     font-size: 2rem;
@@ -45,16 +45,26 @@ body {
     line-height: 1.4;
   }
   
-  .text-base {
-    font-size: 1rem;
+  /* Ensure minimum 16px font size to prevent iOS zoom */
+  .text-base,
+  input,
+  textarea,
+  select {
+    font-size: max(1rem, 16px);
   }
   
   .text-lg {
-    font-size: 1.125rem;
+    font-size: max(1.125rem, 16px);
   }
   
   .text-xl {
-    font-size: 1.25rem;
+    font-size: max(1.25rem, 16px);
+  }
+  
+  /* Mobile spacing adjustments */
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
@@ -63,16 +73,85 @@ body {
   button, 
   .btn-primary,
   .btn-secondary,
-  a[role="button"] {
-    min-height: 44px;
-    min-width: 44px;
+  a[role="button"],
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
     padding: 12px 24px;
+  }
+  
+  /* Improved spacing for mobile cards */
+  .card-mobile {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Mobile-friendly focus states */
+  .focus-visible:focus-visible {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+  }
+}
+
+/* Mobile viewport optimizations */
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Mobile grid improvements */
+  .grid-mobile-stack > * {
+    grid-column: 1 / -1;
+  }
+  
+  /* Mobile text wrapping */
+  .mobile-break-words {
+    word-break: break-word;
+    hyphens: auto;
+  }
+  
+  /* Optimized animations for mobile */
+  .animate-fade-in-up {
+    animation-duration: 0.3s;
   }
 }
 
 /* Custom utilities */
 .container {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Enhanced responsive utilities */
+.responsive-text {
+  @apply text-base sm:text-lg md:text-xl;
+}
+
+.responsive-heading {
+  @apply text-2xl sm:text-3xl md:text-4xl;
+}
+
+.responsive-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+}
+
+.responsive-padding {
+  @apply p-4 sm:p-6 lg:p-8;
+}
+
+.responsive-margin {
+  @apply mb-6 sm:mb-8 lg:mb-12;
+}
+
+/* Safe area handling for mobile devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }
 
 .btn-primary {

@@ -57,7 +57,7 @@ export default function About() {
       {/* Simple gradient transition */}
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-primary-50/80 to-transparent"></div>
       
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-6 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Image */}
           <div className="text-center lg:text-left animate-fade-in-up">
@@ -120,15 +120,15 @@ export default function About() {
 
           {/* Content */}
           <div className="animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-            <h2 id="about-title" className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
+            <h2 id="about-title" className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-4 break-words">
               Pourquoi me faire confiance?
             </h2>
-            <h3 id="about-description" className="text-xl lg:text-2xl text-gradient-primary font-semibold mb-6">
+            <h3 id="about-description" className="text-lg sm:text-xl lg:text-2xl text-gradient-primary font-semibold mb-6 break-words">
               Léo Barcet - Le comédien-coach qui révèle votre potentiel oratoire
             </h3>
 
             {/* Enhanced Credentials */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6" role="list" aria-label="Qualifications professionnelles">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6" role="list" aria-label="Qualifications professionnelles">
               {credentials.map((credential, index) => (
                 <div 
                   key={index} 
@@ -146,12 +146,12 @@ export default function About() {
                   >
                     <path d="M12 2L9.19 8.63L2 9.24l5.19 4.73L5.82 21L12 17.27L18.18 21l-1.37-7.03L22 9.24l-7.19-.61L12 2z"/>
                   </svg>
-                  <span className="text-neutral-700 font-medium">{credential}</span>
+                  <span className="text-neutral-700 font-medium text-sm sm:text-base break-words">{credential}</span>
                 </div>
               ))}
             </div>
 
-            <p className="text-neutral-700 text-lg leading-relaxed mb-6">
+            <p className="text-neutral-700 text-base sm:text-lg leading-relaxed mb-6 break-words">
               Je ne suis pas un consultant en communication classique. Je suis un <strong>artiste qui maîtrise les techniques d'accompagnement</strong>. 
               Mon regard de <strong>comédien et metteur en scène</strong>, couplé à mes compétences de <strong>coach à l'écoute</strong>, 
               vous offre une approche unique pour transformer votre prise de parole.
@@ -176,10 +176,10 @@ export default function About() {
         {/* Four Expertises Section */}
         <div className="mt-16 lg:mt-24" role="region" aria-labelledby="expertises-title">
           <div className="text-center mb-12">
-            <h3 id="expertises-title" className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
+            <h3 id="expertises-title" className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-4 break-words">
               Quatre expertises en une
             </h3>
-            <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-neutral-600 max-w-2xl mx-auto break-words">
               Une approche unique qui combine l'art théâtral et les techniques de coaching pour des résultats exceptionnels
             </p>
           </div>
@@ -188,7 +188,7 @@ export default function About() {
             {expertises.map((expertise, index) => (
               <article 
                 key={index} 
-                className="group relative bg-white/80 backdrop-blur-sm border border-neutral-200/50 rounded-2xl p-6 lg:p-8 focus-within:shadow-xl transition-shadow duration-300 animate-fade-in-up"
+                className="group relative bg-white/80 backdrop-blur-sm border border-neutral-200/50 rounded-2xl p-4 sm:p-6 lg:p-8 focus-within:shadow-xl transition-shadow duration-300 animate-fade-in-up"
                 style={{animationDelay: `${index * 0.1}s`}}
                 role="listitem"
                 aria-labelledby={`expertise-${index}-title`}
@@ -197,13 +197,15 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-50/30 to-secondary-50/30 rounded-2xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
                 
                 <div className="relative z-10">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="text-4xl lg:text-5xl" role="img" aria-label={`Icône ${expertise.title}`}>{expertise.icon}</div>
-                    <h4 id={`expertise-${index}-title`} className="text-xl lg:text-2xl font-bold text-neutral-900 group-focus-within:text-primary-600 transition-colors duration-300">
-                      {expertise.title}
-                    </h4>
+                  <div className="flex items-start gap-3 sm:gap-4 mb-4">
+                    <div className="text-3xl sm:text-4xl lg:text-5xl flex-shrink-0" role="img" aria-label={`Icône ${expertise.title}`}>{expertise.icon}</div>
+                    <div className="min-w-0">
+                      <h4 id={`expertise-${index}-title`} className="text-lg sm:text-xl lg:text-2xl font-bold text-neutral-900 group-focus-within:text-primary-600 transition-colors duration-300 break-words">
+                        {expertise.title}
+                      </h4>
+                    </div>
                   </div>
-                  <p id={`expertise-${index}-desc`} className="text-neutral-700 leading-relaxed">
+                  <p id={`expertise-${index}-desc`} className="text-neutral-700 leading-relaxed text-sm sm:text-base break-words">
                     {expertise.description}
                   </p>
                 </div>

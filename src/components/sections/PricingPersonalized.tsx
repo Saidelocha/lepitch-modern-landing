@@ -14,13 +14,13 @@ export default function PricingPersonalized() {
         </svg>
       </div>
       
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-6 sm:px-8">
         {/* Header */}
         <div className="text-center mb-8 md:mb-12 lg:mb-16">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 leading-tight break-words">
             Un accompagnement 100% sur-mesure
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed break-words">
             Chaque entrepreneur est unique, votre solution pitch aussi. Découvrez l'approche personnalisée qui s'adapte à vos besoins exacts.
           </p>
           <SpotsLeftBadge variant="pricing" />
@@ -56,70 +56,7 @@ export default function PricingPersonalized() {
             </div>
 
             {/* Process Steps */}
-            <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-16 mb-8 md:mb-12 mt-6 md:mt-8">
-              
-              {/* Connector Arrows (desktop only) */}
-              <div className="hidden lg:block absolute inset-0 pointer-events-none">
-                {/* Arrow 1: Between Diagnostic and Proposition */}
-                <div className="absolute top-1/2 -translate-y-1/2 left-[32%] -translate-x-1/2 z-20">
-                  <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2" tabIndex={0} role="button" aria-label="Étape suivante vers la proposition personnalisée">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
-                
-                {/* Arrow 2: Between Proposition and Accompagnement */}
-                <div className="absolute top-1/2 -translate-y-1/2 left-[68%] -translate-x-1/2 z-20">
-                  <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2" tabIndex={0} role="button" aria-label="Étape suivante vers l'accompagnement adapté">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Connector Arrows Mobile (vertical) */}
-              <div className="md:hidden absolute inset-0 pointer-events-none">
-                {/* Arrow 1: After Diagnostic */}
-                <div className="absolute top-1/3 -translate-y-1/2 left-1/2 -translate-x-1/2 z-20">
-                  <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 rotate-90">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
-                
-                {/* Arrow 2: After Proposition */}
-                <div className="absolute top-2/3 -translate-y-1/2 left-1/2 -translate-x-1/2 z-20">
-                  <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 rotate-90">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Connector Arrows Tablet (horizontal for 2-column layout) */}
-              <div className="hidden md:block lg:hidden absolute inset-0 pointer-events-none">
-                {/* Arrow 1: Between Diagnostic and Proposition (first row) */}
-                <div className="absolute top-1/4 -translate-y-1/2 left-1/2 -translate-x-1/2 z-20">
-                  <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center shadow-lg transition-all duration-300">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
-                
-                {/* Arrow 2: Pointing to Accompagnement (center to bottom) */}
-                <div className="absolute top-3/4 -translate-y-1/2 left-1/4 -translate-x-1/2 z-20">
-                  <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 rotate-90">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12 mb-8 md:mb-12 mt-6 md:mt-8">
               {PERSONALIZED_PROCESS_STEPS.map((step: ProcessStep) => (
                 <div key={step.number} className="text-center group relative">
                   
@@ -137,13 +74,13 @@ export default function PricingPersonalized() {
                     </div>
 
                     {/* Step Content */}
-                    <h3 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-300 leading-tight">
+                    <h3 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-300 leading-tight break-words">
                       {step.title}
                     </h3>
-                    <p className="text-primary-600 font-semibold mb-3 text-xs md:text-sm uppercase tracking-wide">
+                    <p className="text-primary-600 font-semibold mb-3 text-xs md:text-sm uppercase tracking-wide break-words">
                       {step.duration}
                     </p>
-                    <p className="text-gray-700 leading-relaxed text-sm md:text-base">
+                    <p className="text-gray-700 leading-relaxed text-sm md:text-base break-words">
                       {step.description}
                     </p>
                     
@@ -153,15 +90,15 @@ export default function PricingPersonalized() {
             </div>
 
             {/* CTA */}
-            <div className="text-center mt-6 md:mt-8">
+            <div className="text-center mt-6 md:mt-8 px-4">
               <Link
                 href={CONTACT.bookingUrl}
-                className="inline-block bg-gradient-to-r from-primary-600 via-primary-700 to-secondary-600 hover:from-primary-700 hover:via-primary-800 hover:to-secondary-700 text-white font-bold text-base md:text-lg px-8 md:px-14 py-4 md:py-5 rounded-xl md:rounded-2xl transition-all duration-300 transform md:hover:scale-105 shadow-2xl hover:shadow-3xl border border-white/20 backdrop-blur-sm relative overflow-hidden group min-h-[44px] touch-manipulation"
+                className="inline-block bg-gradient-to-r from-primary-600 via-primary-700 to-secondary-600 hover:from-primary-700 hover:via-primary-800 hover:to-secondary-700 text-white font-bold text-base md:text-lg px-6 sm:px-8 md:px-14 py-3 sm:py-4 md:py-5 rounded-xl md:rounded-2xl transition-all duration-300 transform md:hover:scale-105 shadow-2xl hover:shadow-3xl border border-white/20 backdrop-blur-sm relative overflow-hidden group min-h-[48px] min-w-[48px] touch-manipulation"
               >
-                <span className="relative z-10">🚀 Démarrer mon diagnostic gratuit</span>
+                <span className="relative z-10 break-words">🚀 Démarrer mon diagnostic gratuit</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
-              <p className="text-gray-600 text-sm md:text-base mt-4 font-medium">
+              <p className="text-gray-600 text-sm md:text-base mt-4 font-medium break-words">
                 🔒 Gratuit • Sans engagement • 30 minutes
               </p>
             </div>
@@ -172,7 +109,7 @@ export default function PricingPersonalized() {
 
         {/* Benefits Section */}
         <div className="max-w-4xl mx-auto mb-8 md:mb-12">
-          <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-center text-gray-900 mb-6 md:mb-8 leading-tight">
+          <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-center text-gray-900 mb-6 md:mb-8 leading-tight break-words">
             Pourquoi une approche personnalisée ?
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
@@ -189,7 +126,7 @@ export default function PricingPersonalized() {
                     <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                   </svg>
                 </div>
-                <span className="text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base">
+                <span className="text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base break-words">
                   {benefit}
                 </span>
               </div>
